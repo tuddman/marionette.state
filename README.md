@@ -604,7 +604,7 @@ var StatefulView = Mn.ItemView.extend({
 
   initialize(options={}) {
     this.state = options.state;
-    this.bindEntityEvents(this, this.state, this.stateEvents);
+    this.bindEvents(this, this.state, this.stateEvents);
   },
 
   onStateChange(state) {
@@ -718,7 +718,7 @@ var MyView = Mn.ItemView.extend({
 
 ##### `syncEntityEvents(target, entity, bindings, event)`
 
-Registers event bindings `bindings` with `entity` using [`Mn.bindEntityEvents`](https://github.com/marionettejs/backbone.marionette/blob/master/docs/marionette.functions.md#marionettebindentityevents) using `target` as context, and then synchronizes using [`sync()`](#sync-target-entity-bindings).  If `event` is supplied, rather than syncing immediately, syncing will occur on every firing of `event` by `target`.  This is useful for syncing a model to DOM within a View, for example.  The standard event `options` object will contain the value `syncing: true` to indicate the call was made during a sync rather than an entity event.
+Registers event bindings `bindings` with `entity` using [`Mn.bindEvents`](https://github.com/marionettejs/backbone.marionette/blob/master/docs/marionette.functions.md#marionettebindEvents) using `target` as context, and then synchronizes using [`sync()`](#sync-target-entity-bindings).  If `event` is supplied, rather than syncing immediately, syncing will occur on every firing of `event` by `target`.  This is useful for syncing a model to DOM within a View, for example.  The standard event `options` object will contain the value `syncing: true` to indicate the call was made during a sync rather than an entity event.
 
 ##### Example without syncEntityEvents
 
@@ -732,7 +732,7 @@ var View = Mn.ItemView.extend({
     this.entity = new Backbone.Model({
       foo: true 
     });
-    this.bindEntityEvents(this.entity, this.entityEvents);
+    this.bindEvents(this.entity, this.entityEvents);
   },
 
   onChangeFoo(entity, foo) {
